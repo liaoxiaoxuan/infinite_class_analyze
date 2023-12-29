@@ -19,8 +19,8 @@ from jiayan import CharHMMTokenizer
 # 匯入 data
 with open('spider_zonggui_previous.txt', 'r', encoding='utf-8') as f:
     data = f.read()
-    print(data)
-    print('------------------')
+    # print(data)
+    # print('------------------')
 
 
 
@@ -38,6 +38,13 @@ with open('spider_zonggui_previous.txt', 'r', encoding='utf-8') as f:
 
 
 
+# 排除範圍
+    
+def remove_brackets(data):
+    return re.sub(r"\《(.+?)\》", '', data)
+
+
+
 # 分詞
 
 # 進行分詞
@@ -45,8 +52,15 @@ lm = load_lm('../static/jiayan_models/jiayan_models/jiayan.klm')
 tokenizer = CharHMMTokenizer(lm)
 
 # 顯示分詞結果
-result = list(tokenizer.tokenize(data))
+result = list(tokenizer.tokenize(remove_brackets(data)))
 print(result)
+
+
+
+# 輸出結果 to txt
+with open("author_output.txt", "w", encoding="utf-8") as file:
+    file.write(" ".join(result))
+
 
 
 # # 進行句法分析
