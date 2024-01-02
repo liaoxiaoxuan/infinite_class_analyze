@@ -63,12 +63,6 @@ tokenizing = list(tokenizer.tokenize(remove_brackets(data)))
 
 
 
-# # 輸出結果 to txt
-# with open("author_tokenizer.txt", "w", encoding="utf-8") as file:
-#     file.write(" ".join(tokenizing))
-
-
-
 # # 進行句法分析
 # # 注意：Jiayan 主要提供分詞功能，句法分析可能不如其他工具包完善
 # # 下面的示例僅為演示目的
@@ -85,11 +79,26 @@ tokenizing = list(tokenizer.tokenize(remove_brackets(data)))
 counter = Counter(tokenizing)
 print(counter)
 
-# # 前幾名
-# most_counter_dict = Counter(matches)  # 出來的結果會是 dict
-# # most_counter_list = Counter(matches).most_common(100)  # 出來的結果會是 list
-# # most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
-# print(most_counter_dict)
+
+
+# # 輸出結果 to txt
+
+# # 結果是key
+# with open("author_tokenizer_counter.txt", "w", encoding="utf-8") as file:
+#     file.write(" ".join(counter))
+
+# # 結果是dict
+with open("author_tokenizer_counter.txt", "w", encoding="utf-8") as file:
+    for key, value in counter.items():
+        file.write(f"{key}: {value}\n")
+
+
+
+# 前幾名
+most_counter_dict = Counter(tokenizing)  # 出來的結果會是 dict
+# most_counter_list = Counter(matches).most_common(100)  # 出來的結果會是 list
+# most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
+print(most_counter_dict)
 
 # STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕']
 # [most_counter_dict.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
