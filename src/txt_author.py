@@ -32,9 +32,9 @@ with open('spider_zonggui_previous.txt', 'r', encoding='utf-8') as f:
 # font_path = "./NotoSerifTC-Regular.otf"  # 替換為實際的中文字體文件路徑
 # font_prop = FontProperties(fname=font_path)
 
-# # # 設定中文字體
-# # font_path = r"D:\PYTHON\infinite_class_spider\src\NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
-# # font_prop = FontProperties(fname=font_path)
+# # 設定中文字體
+# font_path = r"D:\PYTHON\infinite_class_spider\src\NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
+# font_prop = FontProperties(fname=font_path)
 
 
 
@@ -52,46 +52,52 @@ lm = load_lm('../static/jiayan_models/jiayan_models/jiayan.klm')
 tokenizer = CharHMMTokenizer(lm)
 
 # 顯示分詞結果
+
+# # 整份文件
+# result = list(tokenizer.tokenize(data))
+
+# 排除範圍
 result = list(tokenizer.tokenize(remove_brackets(data)))
+
 print(result)
 
 
 
 # 輸出結果 to txt
-with open("author_output.txt", "w", encoding="utf-8") as file:
+with open("author_tokenizer.txt", "w", encoding="utf-8") as file:
     file.write(" ".join(result))
 
 
 
-# # 進行句法分析
-# # 注意：Jiayan 主要提供分詞功能，句法分析可能不如其他工具包完善
-# # 下面的示例僅為演示目的
-# syntax_analysis = jiayan.seg(text)
+# # # 進行句法分析
+# # # 注意：Jiayan 主要提供分詞功能，句法分析可能不如其他工具包完善
+# # # 下面的示例僅為演示目的
+# # syntax_analysis = jiayan.seg(text)
 
-# # 顯示句法分析結果
-# print("句法分析結果:", syntax_analysis)
+# # # 顯示句法分析結果
+# # print("句法分析結果:", syntax_analysis)
 
 
 
-# # 詞頻
+# # # 詞頻
 
-# # # 總覽
-# # counter = Counter(matches)
-# # print(counter)
+# # # # 總覽
+# # # counter = Counter(matches)
+# # # print(counter)
 
-# # 前幾名
-# most_counter_dict = Counter(matches)  # 出來的結果會是 dict
-# # most_counter_list = Counter(matches).most_common(100)  # 出來的結果會是 list
-# # most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
-# print(most_counter_dict)
+# # # 前幾名
+# # most_counter_dict = Counter(matches)  # 出來的結果會是 dict
+# # # most_counter_list = Counter(matches).most_common(100)  # 出來的結果會是 list
+# # # most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
+# # print(most_counter_dict)
 
-# STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕']
-# [most_counter_dict.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
-# print(most_counter_dict) # 把計算完的每個分詞出現次數顯示出來看看
+# # STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕']
+# # [most_counter_dict.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
+# # print(most_counter_dict) # 把計算完的每個分詞出現次數顯示出來看看
 
-# # 取前 N 個詞頻最高的詞
-# N = 20
-# top_words = dict(most_counter_dict.most_common(N))
+# # # 取前 N 個詞頻最高的詞
+# # N = 20
+# # top_words = dict(most_counter_dict.most_common(N))
 
 
 
