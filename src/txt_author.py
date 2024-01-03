@@ -24,17 +24,17 @@ with open('spider_zonggui_previous.txt', 'r', encoding='utf-8') as f:
 
 
 
-# # 定義繁體中文檔名
-# WORDS_PATH = 'dict.txt.big.txt' # 繁體中文詞庫檔名
-# TC_FONT_PATH = './NotoSerifTC-Regular.otf' # 繁體中文字型檔名
+# 定義繁體中文檔名
+WORDS_PATH = 'dict.txt.big.txt' # 繁體中文詞庫檔名
+TC_FONT_PATH = './NotoSerifTC-Regular.otf' # 繁體中文字型檔名
 
-# # 匯入圖表中文字體
-# font_path = "./NotoSerifTC-Regular.otf"  # 替換為實際的中文字體文件路徑
-# font_prop = FontProperties(fname=font_path)
+# 匯入圖表中文字體
+font_path = "./NotoSerifTC-Regular.otf"  # 替換為實際的中文字體文件路徑
+font_prop = FontProperties(fname=font_path)
 
-# # 設定中文字體
-# font_path = r"D:\PYTHON\infinite_class_spider\src\NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
-# font_prop = FontProperties(fname=font_path)
+# 設定中文字體
+font_path = r"D:\PYTHON\infinite_class_analyze\src\NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
+font_prop = FontProperties(fname=font_path)
 
 
 
@@ -77,7 +77,19 @@ tokenizing = list(tokenizer.tokenize(remove_brackets(data)))
 
 # 總覽
 counter = Counter(tokenizing)
-print(counter)
+# print(counter)
+
+
+
+# # 前幾名
+# most_counter_dict = Counter(tokenizing)  # 出來的結果會是 dict
+# # most_counter_list = Counter(matches).most_common(100)  # 出來的結果會是 list
+# # most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
+# # print(most_counter_dict)
+
+STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕','：','、','？','！','『','』','；','●','［','］','■',]
+[counter.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
+print(counter) # 把計算完的每個分詞出現次數顯示出來看看
 
 
 
@@ -87,22 +99,11 @@ print(counter)
 # with open("author_tokenizer_counter.txt", "w", encoding="utf-8") as file:
 #     file.write(" ".join(counter))
 
-# # 結果是dict
+# 結果是dict
 with open("author_tokenizer_counter.txt", "w", encoding="utf-8") as file:
-    for key, value in counter.items():
-        file.write(f"{key}: {value}\n")
+    file.write(str(counter))
 
 
-
-# 前幾名
-most_counter_dict = Counter(tokenizing)  # 出來的結果會是 dict
-# most_counter_list = Counter(matches).most_common(100)  # 出來的結果會是 list
-# most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
-print(most_counter_dict)
-
-# STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕']
-# [most_counter_dict.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
-# print(most_counter_dict) # 把計算完的每個分詞出現次數顯示出來看看
 
 # # 取前 N 個詞頻最高的詞
 # N = 20
