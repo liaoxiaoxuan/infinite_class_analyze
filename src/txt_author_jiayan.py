@@ -33,7 +33,7 @@ font_path = "./NotoSerifTC-Regular.otf"  # 替換為實際的中文字體文件�
 font_prop = FontProperties(fname=font_path)
 
 # 設定中文字體
-font_path = r"D:\PYTHON\infinite_class_analyze\src\NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
+font_path = r"D:/PYTHON/infinite_class_analyze/src/NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
 font_prop = FontProperties(fname=font_path)
 
 
