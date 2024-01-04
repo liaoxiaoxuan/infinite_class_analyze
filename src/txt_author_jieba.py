@@ -76,26 +76,39 @@ data = remove_brackets(data)
 
 # jieba.lcut () 模式
 seg_list = jieba.lcut(data)
-print(seg_list)
+# print(seg_list)
 
 
 
-# # 詞頻
+# 詞頻
 
-# # # 總覽
-# # counter = Counter(matches)
-# # print(counter)
+# 總覽
+counter = Counter(seg_list)
+# print(counter)
 
 # # 前幾名
-# most_counter_dict = Counter(matches)  # 出來的結果會是 dict
+# most_counter_dict = Counter(seg_list)  # 出來的結果會是 dict
 # # most_counter_list = Counter(matches).most_common(100)  # 出來的結果會是 list
 # # most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
 # print(most_counter_dict)
 
-# STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕','：','、','？','！','『','』','；','●','［','］','■']
-# [most_counter_dict.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
-# print(most_counter_dict) # 把計算完的每個分詞出現次數顯示出來看看
+# 停用詞
+STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕','：','、','？','！','『','』','；','●','［','］','■']
+[counter.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
+print(counter) # 把計算完的每個分詞出現次數顯示出來看看
 
 # # 取前 N 個詞頻最高的詞
 # N = 20
 # top_words = dict(most_counter_dict.most_common(N))
+
+
+
+# # 輸出結果 to txt
+
+# # 結果是key
+# with open("author_tokenizer_counter.txt", "w", encoding="utf-8") as file:
+#     file.write(" ".join(counter))
+
+# 結果是dict
+with open("author_lcut.txt", "w", encoding="utf-8") as file:
+    file.write(str(seg_list))
