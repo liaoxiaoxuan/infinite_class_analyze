@@ -87,7 +87,7 @@ counter = Counter(tokenizing)
 # # most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
 # # print(most_counter_dict)
 
-STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕','：','、','？','！','『','』','；','●','［','］','■',]
+STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕','：','、','？','！','『','』','；','●','［','］','■']
 [counter.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
 print(counter) # 把計算完的每個分詞出現次數顯示出來看看
 
