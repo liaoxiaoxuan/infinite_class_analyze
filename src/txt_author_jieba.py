@@ -53,12 +53,12 @@ def remove_brackets(data):
 
 # jieba 斷詞
 
-# 精確模式
+# # 精確模式
 # for sentence in data:
-seg_list = jieba.lcut(data)
-# print('/'.join(seg_list))
-
-print('---------------')
+#     seg_list = jieba.lcut(data)
+#     print('/'.join(seg_list))
+    
+#     print('---------------')
 
 # # 全模式
 # for sentence in data:
@@ -72,33 +72,28 @@ print('---------------')
 #     seg_list = jieba.cut_for_search(sentence)
 #     print('/'.join(seg_list))
 
-
-
-# 使用正則表示式提取資訊（書名）
-pattern = r"\《(.*?)\》"
-matches = re.findall(pattern, data)
-
-# 輸出提取到的資訊
-# print("提取到的括號內的資訊：", matches)
+# jieba.lcut () 模式
+seg_list = jieba.lcut(data)
+print(seg_list)
 
 
 
-# 詞頻
+# # 詞頻
 
-# # 總覽
-# counter = Counter(matches)
-# print(counter)
+# # # 總覽
+# # counter = Counter(matches)
+# # print(counter)
 
-# 前幾名
-most_counter_dict = Counter(matches)  # 出來的結果會是 dict
-# most_counter_list = Counter(matches).most_common(100)  # 出來的結果會是 list
-# most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
-print(most_counter_dict)
+# # 前幾名
+# most_counter_dict = Counter(matches)  # 出來的結果會是 dict
+# # most_counter_list = Counter(matches).most_common(100)  # 出來的結果會是 list
+# # most_counter_dict = {_[0]:_[1] for _ in most_counter_list}  # 轉換成 dict
+# print(most_counter_dict)
 
-STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕','：','、','？','！','『','』','；','●','［','］','■']
-[most_counter_dict.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
-print(most_counter_dict) # 把計算完的每個分詞出現次數顯示出來看看
+# STOP_WORDS = [' ', '，', '（', '）', '...', '。', '「', '」', '[', ']', '\n','《','》','〔','〕','：','、','？','！','『','』','；','●','［','］','■']
+# [most_counter_dict.pop(x, None) for x in STOP_WORDS] # 從字典裡刪除停用詞
+# print(most_counter_dict) # 把計算完的每個分詞出現次數顯示出來看看
 
-# 取前 N 個詞頻最高的詞
-N = 20
-top_words = dict(most_counter_dict.most_common(N))
+# # 取前 N 個詞頻最高的詞
+# N = 20
+# top_words = dict(most_counter_dict.most_common(N))
