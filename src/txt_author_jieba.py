@@ -43,6 +43,8 @@ font_prop = FontProperties(fname=font_path)
 def remove_brackets(data):
     return re.sub(r"\《(.+?)\》", '', data)
 
+data = remove_brackets(data)
+
 
 
 # # 切換 jieba 繁體中文詞庫
