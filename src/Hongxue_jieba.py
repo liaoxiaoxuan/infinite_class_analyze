@@ -38,12 +38,12 @@ font_prop = FontProperties(fname=font_path)
 
 
 
-# # 排除範圍
+# 排除範圍
     
-# def remove_brackets(data):
-#     return re.sub(r"\《(.+?)\》", '', data)
+def remove_brackets(data):
+    return re.sub(r"\〈(.+?)\〉",r"\【(.+?)\】", '', data)
 
-# data = remove_brackets(data)
+data = remove_brackets(data)
 
 
 
