@@ -77,18 +77,26 @@ words = []
 for i in seg_list:
     # 將 seg_list 中的每個元素 i 中的特定字符（例如標點符號和特殊字元）替換為空字串
     # i = re.sub("尋找字符", "取代字符", i)
-    i = re.sub("[\s+\.\!\/_,$%^*(+\"\'””《》「」〔〕『』；［］■●...]+|[+——！，。？、~@#￥%……&*（）：]+", "", i)
+    i = re.sub("[\s+\.\!\/_,$%^*(+\"\'””《》「」〔〕『』；［］■●...〈〉【】]+|[+——！，。？、~@#￥%……&*（）：]+", "", i)
     if len(i) > 0:
         words.append(i)
 # print(len(words))
 # print(words)
 
-# 建立 trigrams 的列表
-# Trigrams 是一種 NLP 中常用的技術，用於建立文本的模型，特別是在語言生成或預測下一個詞語時
-# 建立一個包含文本中所有可能的 trigram 的列表，輸出前三個 trigrams，以供檢視
-trigrams = [([words[i], words[i + 1]], words[i + 2]) for i in range(len(words) - 2)]
-print(trigrams[:3])
+# # 建立 trigrams 的列表
+# # Trigrams 是一種 NLP 中常用的技術，用於建立文本的模型，特別是在語言生成或預測下一個詞語時
+# # 建立一個包含文本中所有可能的 trigram 的列表，輸出前三個 trigrams，以供檢視
+# trigrams = [([words[i], words[i + 1]], words[i + 2]) for i in range(len(words) - 2)]
+# print(trigrams[:3])
 
 
 
+# # 輸出結果 to txt
 
+# # 結果是key
+# with open("Hongxue_jieba_counter.txt", "w", encoding="utf-8") as file:
+#     file.write(" ".join(counter))
+
+# 結果是dict
+with open("Hongxue_word2vec_lcut.txt", "w", encoding="utf-8") as file:
+    file.write(str(words))
