@@ -20,3 +20,25 @@ from jiayan import CharHMMTokenizer
 # 在 jieba 分詞 module 中，增加字典
 jieba.load_userdict("Hongxue_character.txt")  # 人名
 jieba.load_userdict("Hongxue_place.txt")  # 地名
+
+
+
+# 匯入 data
+with open('Dream_of_the_Red_Chamber.txt', 'r', encoding='utf-8') as f:
+    data = f.read()
+    # print(type(data))  # 字串，非list
+    # print('------------------')
+# sys.exit(0)  # 正常離開程式
+
+# 定義繁體中文檔名
+WORDS_PATH = 'dict.txt.big.txt' # 繁體中文詞庫檔名
+TC_FONT_PATH = './NotoSerifTC-Regular.otf' # 繁體中文字型檔名
+
+# 匯入圖表中文字體
+font_path = "./NotoSerifTC-Regular.otf"  # 替換為實際的中文字體文件路徑
+font_prop = FontProperties(fname=font_path)
+
+# 設定中文字體
+font_path = r"D:/PYTHON/infinite_class_analyze/src/NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
+font_prop = FontProperties(fname=font_path)
+
