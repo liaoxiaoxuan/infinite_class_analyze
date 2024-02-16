@@ -7,7 +7,7 @@ from collections import Counter # 次數統計模組
 
 from PIL import Image           # 圖片處理模組
 import jieba                    # 分詞模組
-import re                       # 正則表達示
+import re                       # 正則表達式
 import matplotlib.pyplot as plt # 視覺化模組
 from matplotlib.font_manager import FontProperties  # 導入 FontProperties 類別，用於設置字體相關屬性
 import wordcloud                # 文字雲模組
@@ -75,11 +75,19 @@ words = []
 # 過濾掉所有的標點符號
 
 for i in seg_list:
-    i = re.sub("[\s+\.\!\/_,$%^*(+\"\'””《》]+|[+——！，。？、~@#￥%……&*（）：]+", "", i)
+    # 將 seg_list 中的每個元素 i 中的特定字符（例如標點符號和特殊字元）替換為空字串
+    # i = re.sub("尋找字符", "取代字符", i)
+    i = re.sub("[\s+\.\!\/_,$%^*(+\"\'””《》「」〔〕『』；［］■●...]+|[+——！，。？、~@#￥%……&*（）：]+", "", i)
     if len(i) > 0:
         words.append(i)
 # print(len(words))
 # print(words)
+
+# 建立 trigrams 的列表
+# Trigrams 是一種 NLP 中常用的技術，用於建立文本的模型，特別是在語言生成或預測下一個詞語時
+# 建立一個包含文本中所有可能的 trigram 的列表，輸出前三個 trigrams，以供檢視
+trigrams = [([words[i], words[i + 1]], words[i + 2]) for i in range(len(words) - 2)]
+print(trigrams[:3])
 
 
 
