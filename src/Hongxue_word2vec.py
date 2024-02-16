@@ -42,3 +42,30 @@ font_prop = FontProperties(fname=font_path)
 font_path = r"D:/PYTHON/infinite_class_analyze/src/NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
 font_prop = FontProperties(fname=font_path)
 
+
+
+# jieba 斷詞
+
+# # 精確模式
+# for sentence in data:
+#     seg_list = jieba.lcut(data)
+#     print('/'.join(seg_list))
+    
+#     print('---------------')
+
+# # 全模式
+# for sentence in data:
+#     seg_list = jieba.cut(sentence, cut_all=True)
+#     print('/'.join(seg_list))
+
+# print('---------------')
+
+# # 搜索引擎模式
+# for sentence in data:
+#     seg_list = jieba.cut_for_search(sentence)
+#     print('/'.join(seg_list))
+
+# jieba.lcut () 模式
+seg_list = jieba.lcut(data)
+words = []
+print(seg_list)
