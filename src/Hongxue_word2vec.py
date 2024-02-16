@@ -17,3 +17,6 @@ from jiayan import CharHMMTokenizer
 
 
 
+# 在 jieba 分詞 module 中，增加字典
+jieba.load_userdict("Hongxue_character.txt")  # 人名
+jieba.load_userdict("Hongxue_place.txt")  # 地名
