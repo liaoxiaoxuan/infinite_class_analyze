@@ -68,4 +68,19 @@ font_prop = FontProperties(fname=font_path)
 # jieba.lcut () 模式
 seg_list = jieba.lcut(data)
 words = []
-print(seg_list)
+# print(seg_list)
+
+
+
+# 過濾掉所有的標點符號
+
+for i in seg_list:
+    i = re.sub("[\s+\.\!\/_,$%^*(+\"\'””《》]+|[+——！，。？、~@#￥%……&*（）：]+", "", i)
+    if len(i) > 0:
+        words.append(i)
+# print(len(words))
+# print(words)
+
+
+
+
