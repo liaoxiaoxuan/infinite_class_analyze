@@ -30,45 +30,46 @@ f = f.read().split("。")
 
 # sys.exit(0)  # 正常離開程式
 
-# # 定義繁體中文檔名
-# WORDS_PATH = 'dict.txt.big.txt' # 繁體中文詞庫檔名
-# TC_FONT_PATH = './NotoSerifTC-Regular.otf' # 繁體中文字型檔名
+# 定義繁體中文檔名
+WORDS_PATH = 'dict.txt.big.txt' # 繁體中文詞庫檔名
+TC_FONT_PATH = './NotoSerifTC-Regular.otf' # 繁體中文字型檔名
 
-# # 匯入圖表中文字體
-# font_path = "./NotoSerifTC-Regular.otf"  # 替換為實際的中文字體文件路徑
-# font_prop = FontProperties(fname=font_path)
+# 匯入圖表中文字體
+font_path = "./NotoSerifTC-Regular.otf"  # 替換為實際的中文字體文件路徑
+font_prop = FontProperties(fname=font_path)
 
-# # 設定中文字體
-# font_path = r"D:/PYTHON/infinite_class_analyze/src/NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
-# font_prop = FontProperties(fname=font_path)
+# 設定中文字體
+font_path = r"D:/PYTHON/infinite_class_analyze/src/NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
+font_prop = FontProperties(fname=font_path)
 
 
 
-# # jieba 斷詞
+# jieba 斷詞
 
-# # # 精確模式
-# # for sentence in data:
-# #     seg_list = jieba.lcut(data)
-# #     print('/'.join(seg_list))
+# # 精確模式
+# for sentence in data:
+#     seg_list = jieba.lcut(data)
+#     print('/'.join(seg_list))
     
-# #     print('---------------')
+#     print('---------------')
 
-# # # 全模式
-# # for sentence in data:
-# #     seg_list = jieba.cut(sentence, cut_all=True)
-# #     print('/'.join(seg_list))
+# # 全模式
+# for sentence in data:
+#     seg_list = jieba.cut(sentence, cut_all=True)
+#     print('/'.join(seg_list))
 
-# # print('---------------')
+# print('---------------')
 
-# # # 搜索引擎模式
-# # for sentence in data:
-# #     seg_list = jieba.cut_for_search(sentence)
-# #     print('/'.join(seg_list))
+# # 搜索引擎模式
+# for sentence in data:
+#     seg_list = jieba.cut_for_search(sentence)
+#     print('/'.join(seg_list))
 
-# # jieba.lcut () 模式
-# seg_list = jieba.lcut(data)
-# words = []
-# # print(seg_list)
+# jieba.lcut () 模式
+lines = []
+for line in f:
+    temp = jieba.lcut(line)
+    words = []
 
 
 
