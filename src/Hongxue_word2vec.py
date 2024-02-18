@@ -12,6 +12,9 @@ import matplotlib.pyplot as plt # 視覺化模組
 from matplotlib.font_manager import FontProperties  # 導入 FontProperties 類別，用於設置字體相關屬性
 import wordcloud                # 文字雲模組
 
+import gensim
+from gensim.models import Word2Vec
+
 from jiayan import load_lm      # 「甲言」分析工具
 from jiayan import CharHMMTokenizer
 
@@ -84,12 +87,20 @@ print(lines)
 
 
 
+# 輸入 Word2Vec 模型
+model = Word2Vec(lines, window = 2 , min_count = 0)
+renwu = model.wv.most_similar('林黛玉', topn = 20)
+print(renwu)
+
+
+
+
 # # 輸出結果 to txt
 
 # # 結果是key
 # with open("Hongxue_jieba_counter.txt", "w", encoding="utf-8") as file:
 #     file.write(" ".join(counter))
 
-# 結果是dict
-# with open("Hongxue_word2vec_split.txt", "w", encoding="utf-8") as file:
-#     file.write(str(list(f)))
+# # 結果是dict
+# with open("Hongxue_word2vec_jieba_lcut.txt", "w", encoding="utf-8") as file:
+#     file.write(str(lines))
