@@ -9,6 +9,7 @@ from PIL import Image           # 圖片處理模組
 import jieba                    # 分詞模組
 import re                       # 正則表達式
 import matplotlib.pyplot as plt # 視覺化模組
+import matplotlib
 from matplotlib.font_manager import FontProperties  # 導入 FontProperties 類別，用於設置字體相關屬性
 import wordcloud                # 文字雲模組
 
@@ -118,6 +119,18 @@ ax.plot(X_reduced[:, 0], X_reduced[:, 1], '.', markersize = 1, alpha = 0.3, colo
 
 # 繪製幾個特殊單詞的向量
 words = ['賈寶玉', '林黛玉', '香菱', '賈政', '晴雯', '妙玉', '襲人', '薛寶釵', '王熙鳳', '平兒', '賈母', '探春']
+
+
+
+# 設置中文字體，否則無法在圖形上顯示中文
+zhfont1 = matplotlib.font_manager.FontProperties(fname=r'..\Noto_Serif_TC\NotoSerifTC-Light.otf', size=16)
+for w in words:
+    if w in word2ind:
+        ind = word2ind[w]
+        xy = X_reduced[ind]
+        plt.plot(xy[0], xy[1], '.', alpha =1, color = 'red')
+        plt.text(xy[0], xy[1], w, fontproperties = zhfont1, alpha = 1, color = 'yellow')
+plt.show()
 
 
 
