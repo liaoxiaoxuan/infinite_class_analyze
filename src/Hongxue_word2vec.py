@@ -19,6 +19,7 @@ from jiayan import load_lm      # 「甲言」分析工具
 from jiayan import CharHMMTokenizer
 
 import numpy as np              # 多維陣列或矩陣運算
+from sklearn.decomposition import PCA  # 從 scikit-learn 庫（機器學習和數據分析的工具和算法）中，導入 PCA（主成分分析）類
 
 
 
