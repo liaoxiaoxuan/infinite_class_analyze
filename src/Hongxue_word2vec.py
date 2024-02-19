@@ -106,6 +106,15 @@ X_reduced = PCA(n_components=2).fit_transform(rawWordVec)  # 利用主成分分�
 
 
 
+# 繪製所有單詞向量的二維空間投影
+fig = plt.figure(figsize = (15, 10))  # 創建了一個圖形物件 fig，並設置了該圖形的大小為（15, 10）  # plt = Matplotlib
+ax = fig.gca()  # 創建了一個 Axes 物件 ax，並將它設置為剛剛創建的 Matplotlib 圖形物件 fig 的軸
+ax.set_facecolor('black')  # 設置背景顏色為黑色
+# 將散點圖繪製到軸上
+# 在當前軸上繪製一個二維散點圖，散點圖的 X 座標和 Y 座標由 X_reduced 提供，點的樣式為點，大小為 1，透明度為 0.3，顏色為白色
+ax.plot(X_reduced[:, 0], X_reduced[:, 1], '.', markersize = 1, alpha = 0.3, color = 'white')
+
+
 
 # # 輸出結果 to txt
 
