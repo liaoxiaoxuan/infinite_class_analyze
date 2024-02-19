@@ -12,11 +12,13 @@ import matplotlib.pyplot as plt # 視覺化模組
 from matplotlib.font_manager import FontProperties  # 導入 FontProperties 類別，用於設置字體相關屬性
 import wordcloud                # 文字雲模組
 
-import gensim
+import gensim                   # NLP 函式庫
 from gensim.models import Word2Vec
 
 from jiayan import load_lm      # 「甲言」分析工具
 from jiayan import CharHMMTokenizer
+
+import numpy as np              # 多維陣列或矩陣運算
 
 
 
@@ -95,8 +97,8 @@ print(renwu)
 # 將詞向量轉換為二維空間中的向量，以便進行視覺化或其他分析
 rawWordVec = []  # 建立一個空的列表 rawWordVec，用於存儲原始的詞向量
 word2ind = {}  # 建立一個空的字典 word2ind，用於存儲詞到索引的映射
-for i, w in enumerate(model.wv.vocab):  # 遍歷模型中的所有詞彙
-    rawWordVec.append(model[w])  # 將每個詞的詞向量添加到 rawWordVec 中
+for i, w in enumerate(model.wv.index_to_key):  # 遍歷模型中的所有詞彙
+    rawWordVec.append(model.wv.get_vector(w))  # 將每個詞的詞向量添加到 rawWordVec 中
     word2ind[w] = i  # 將詞與其在 rawWordVec 中的索引建立映射
 rawWordVec = np.array(rawWordVec)  # 將 rawWordVec 轉換為NumPy陣列，以便後續的數學運算
 X_reduced = PCA(n_components=2).fit_transform(rawWordVec)  # 利用主成分分析（PCA）將原始的詞向量降維到二維空間
