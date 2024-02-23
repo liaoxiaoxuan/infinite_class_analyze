@@ -24,3 +24,6 @@ from sklearn.decomposition import PCA  # 從 scikit-learn 庫（機器學習和�
 
 
 
+# 在 jieba 分詞 module 中，增加字典
+jieba.load_userdict("Sanguoyanyi_character.txt")  # 人名
+jieba.load_userdict("Sanguoyanyi_place.txt")  # 地名
