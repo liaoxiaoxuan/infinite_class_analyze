@@ -33,7 +33,7 @@ jieba.load_userdict("Sanguoyanyi_place.txt")  # 地名
 # 匯入 data，並用「取代」進行分句
 f = open('Sanguoyanyi.txt', encoding='utf-8')
 data = f.read().split("。")
-print(list(data))
+# print(list(data))
 
 
 
@@ -51,6 +51,46 @@ font_prop = FontProperties(fname=font_path)
 
 
 
+# jieba 斷詞
+
+# # 精確模式
+# for sentence in data:
+#     seg_list = jieba.lcut(data)
+#     print('/'.join(seg_list))
+    
+#     print('---------------')
+
+# # 全模式
+# for sentence in data:
+#     seg_list = jieba.cut(sentence, cut_all=True)
+#     print('/'.join(seg_list))
+
+# print('---------------')
+
+# # 搜索引擎模式
+# for sentence in data:
+#     seg_list = jieba.cut_for_search(sentence)
+#     print('/'.join(seg_list))
+
+# jieba.lcut () 模式
+lines = []
+for line in data:
+    temp = jieba.lcut(line)
+    words = []
+
+
+
+    # 過濾掉所有的標點符號
+    for i in temp:
+        i = re.sub("[\s+\.\!\/_,$%^*(+\"\'””《》「」〔〕『』；［］■●...〈〉【】]+|[+——！，。？、~@#￥%……&*（）：]+", "", i)
+        if len(i) > 0:
+            words.append(i)
+    if len(words) > 0:
+        lines.append(words)
+print(lines)
+
+
+
 # # 輸出結果 to txt
 
 # # 結果是key
@@ -58,5 +98,5 @@ font_prop = FontProperties(fname=font_path)
 #     file.write(" ".join(counter))
 
 # 結果是dict
-with open("Sanguoyanyi_split.txt", "w", encoding="utf-8") as file:
-    file.write(str(list(data)))
+with open("Sanguoyanyi_jieba_lcut.txt", "w", encoding="utf-8") as file:
+    file.write(str(lines))
