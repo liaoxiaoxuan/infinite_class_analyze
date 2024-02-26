@@ -27,3 +27,13 @@ from sklearn.decomposition import PCA  # 從 scikit-learn 庫（機器學習和�
 # 在 jieba 分詞 module 中，增加字典
 jieba.load_userdict("Sanguoyanyi_character.txt")  # 人名
 jieba.load_userdict("Sanguoyanyi_place.txt")  # 地名
+
+
+
+# 匯入 data，並用「取代」進行分句
+f = open('Sanguoyanyi.txt', encoding='utf-8')
+f = f.read().split("。")
+# print(list(f))
+
+
+
