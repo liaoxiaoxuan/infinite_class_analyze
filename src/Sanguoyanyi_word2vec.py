@@ -87,7 +87,23 @@ for line in data:
             words.append(i)
     if len(words) > 0:
         lines.append(words)
-print(lines)
+# print(lines)
+
+
+
+# 輸入 Word2Vec 模型
+model = Word2Vec(lines, window = 2 , min_count = 0)  # 在文本中查找的每個詞彙的左右各2個詞的上下文，並不容忽略任何詞彙
+renwu = model.wv.most_similar('諸葛亮', topn = 20)  # 找到與「亮」最相似的20個詞，並將結果存儲在 renwu 中
+print(renwu)
+
+# 將詞向量轉換為二維空間中的向量，以便進行視覺化或其他分析
+rawWordVec = []  # 建立一個空的列表 rawWordVec，用於存儲原始的詞向量
+word2ind = {}  # 建立一個空的字典 word2ind，用於存儲詞到索引的映射
+for i, w in enumerate(model.wv.index_to_key):  # 遍歷模型中的所有詞彙
+    rawWordVec.append(model.wv.get_vector(w))  # 將每個詞的詞向量添加到 rawWordVec 中
+    word2ind[w] = i  # 將詞與其在 rawWordVec 中的索引建立映射
+rawWordVec = np.array(rawWordVec)  # 將 rawWordVec 轉換為NumPy陣列，以便後續的數學運算
+X_reduced = PCA(n_components=2).fit_transform(rawWordVec)  # 利用主成分分析（PCA）將原始的詞向量降維到二維空間
 
 
 
@@ -97,6 +113,6 @@ print(lines)
 # with open("Hongxue_jieba_counter.txt", "w", encoding="utf-8") as file:
 #     file.write(" ".join(counter))
 
-# 結果是dict
-with open("Sanguoyanyi_jieba_lcut.txt", "w", encoding="utf-8") as file:
-    file.write(str(lines))
+# # 結果是dict
+# with open("Sanguoyanyi_jieba_lcut.txt", "w", encoding="utf-8") as file:
+#     file.write(str(lines))
