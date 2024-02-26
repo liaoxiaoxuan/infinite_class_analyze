@@ -117,6 +117,22 @@ ax.plot(X_reduced[:, 0], X_reduced[:, 1], '.', markersize = 1, alpha = 0.3, colo
 
 
 
+# 繪製幾個特殊單詞的向量
+words = ['諸葛亮', '劉備', '關羽', '張飛', '曹操', '周瑜', '孫權', '趙雲', '劉禪', '司馬懿', '司馬昭']
+
+
+
+# 設置中文字體，否則無法在圖形上顯示中文
+zhfont1 = matplotlib.font_manager.FontProperties(fname=r'..\Noto_Serif_TC\NotoSerifTC-Light.otf', size=16)
+for w in words:
+    if w in word2ind:
+        ind = word2ind[w]
+        xy = X_reduced[ind]
+        plt.plot(xy[0], xy[1], '.', alpha =1, color = 'red')
+        plt.text(xy[0], xy[1], w, fontproperties = zhfont1, alpha = 1, color = 'yellow')
+plt.show()
+
+
 
 # # 輸出結果 to txt
 
