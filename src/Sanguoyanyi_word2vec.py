@@ -32,8 +32,31 @@ jieba.load_userdict("Sanguoyanyi_place.txt")  # 地名
 
 # 匯入 data，並用「取代」進行分句
 f = open('Sanguoyanyi.txt', encoding='utf-8')
-f = f.read().split("。")
-# print(list(f))
+data = f.read().split("。")
+print(list(data))
 
 
 
+# 定義繁體中文檔名
+WORDS_PATH = 'dict.txt.big.txt' # 繁體中文詞庫檔名
+TC_FONT_PATH = './NotoSerifTC-Regular.otf' # 繁體中文字型檔名
+
+# 匯入圖表中文字體
+font_path = "./NotoSerifTC-Regular.otf"  # 替換為實際的中文字體文件路徑
+font_prop = FontProperties(fname=font_path)
+
+# 設定中文字體
+font_path = r"D:/PYTHON/infinite_class_analyze/src/NotoSerifSC-Regular.otf"  # 替換為實際的中文字體文件路徑
+font_prop = FontProperties(fname=font_path)
+
+
+
+# # 輸出結果 to txt
+
+# # 結果是key
+# with open("Hongxue_jieba_counter.txt", "w", encoding="utf-8") as file:
+#     file.write(" ".join(counter))
+
+# # 結果是dict
+# with open("Hongxue_word2vec_jieba_lcut.txt", "w", encoding="utf-8") as file:
+#     file.write(str(lines))
