@@ -57,6 +57,6 @@ font_prop = FontProperties(fname=font_path)
 # with open("Hongxue_jieba_counter.txt", "w", encoding="utf-8") as file:
 #     file.write(" ".join(counter))
 
-# # 結果是dict
-# with open("Hongxue_word2vec_jieba_lcut.txt", "w", encoding="utf-8") as file:
-#     file.write(str(lines))
+# 結果是dict
+with open("Sanguoyanyi_split.txt", "w", encoding="utf-8") as file:
+    file.write(str(list(data)))
