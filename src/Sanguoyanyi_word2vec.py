@@ -134,6 +134,61 @@ plt.show()
 
 
 
+# 計算向量距離
+
+# 定義函數計算兩個人物之間的距離
+def calculate_distance(person1, person2):
+    if person1 in word2ind and person2 in word2ind:
+        # 獲取兩個人物的索引
+        ind1 = word2ind[person1]
+        ind2 = word2ind[person2]
+
+        # 獲取兩個人物的向量
+        vec1 = rawWordVec[ind1]
+        vec2 = rawWordVec[ind2]
+
+        # 計算兩個向量之間的歐式距離
+        distance = np.linalg.norm(vec1 - vec2)
+        return distance
+    else:
+        print(f"詞彙 '{person1}' 或 '{person2}' 不存在於詞彙中。")
+
+
+# 遍歷所有人物組合，並計算距離
+for i in range(len(words)):
+    for j in range(i+1, len(words)):
+        person1 = words[i]
+        person2 = words[j]
+        distance = calculate_distance(person1, person2)
+        if distance is not None:
+            print(f"{person1} 和 {person2} 之間的距離為: {distance}")
+print("----------------------------------------------------------------")
+
+
+# 將人物距離結果由低至高排序
+
+# 創建一個空的列表，用於存儲所有人物之間的距離
+distances = []
+
+# 遍歷所有人物組合，並計算距離
+for i in range(len(words)):
+    for j in range(i+1, len(words)):
+        person1 = words[i]
+        person2 = words[j]
+        distance = calculate_distance(person1, person2)
+        if distance is not None:
+            # 將距離和對應的人物組合添加到 distances 列表中
+            distances.append((person1, person2, distance))
+
+# 將 distances 列表按照距離由低至高排序
+sorted_distances = sorted(distances, key=lambda x: x[2])
+
+# 輸出排序後的結果
+for distance_info in sorted_distances:
+    print(f"{distance_info[0]} 和 {distance_info[1]} 之間的距離為: {distance_info[2]}")            
+
+
+
 # # 輸出結果 to txt
 
 # # 結果是key
