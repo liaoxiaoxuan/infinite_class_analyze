@@ -162,6 +162,7 @@ for i in range(len(words)):
         distance = calculate_distance(person1, person2)
         if distance is not None:
             print(f"{person1} 和 {person2} 之間的距離為: {distance}")
+print("----------------------------------------------------------------")
 
 
 # 將人物距離結果由低至高排序
