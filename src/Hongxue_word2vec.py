@@ -87,13 +87,13 @@ for line in f:
             words.append(i)
     if len(words) > 0:
         lines.append(words)
-print(lines)
+# print(lines)
 
 
 
 # 輸入 Word2Vec 模型
 model = Word2Vec(lines, window = 2 , min_count = 0)  # 在文本中查找的每個詞彙的左右各2個詞的上下文，並不容忽略任何詞彙
-renwu = model.wv.most_similar('林黛玉', topn = 20)  # 找到與「林黛玉」最相似的20個詞，並將結果存儲在 renwu 中
+renwu = model.wv.most_similar('寶玉', topn = 50)  # 找到與「寶玉」最相關的20個詞，並將結果存儲在 renwu 中
 print(renwu)
 
 # 將詞向量轉換為二維空間中的向量，以便進行視覺化或其他分析
@@ -118,7 +118,7 @@ ax.plot(X_reduced[:, 0], X_reduced[:, 1], '.', markersize = 1, alpha = 0.3, colo
 
 
 # 繪製幾個特殊單詞的向量
-words = ['賈寶玉', '林黛玉', '香菱', '賈政', '晴雯', '妙玉', '襲人', '薛寶釵', '王熙鳳', '平兒', '賈母', '探春']
+words = ['賈寶玉', '林黛玉' , '薛寶釵' , '賈元春' , '賈探春' , '史湘雲' , '妙玉' , '賈迎春' , '賈惜春' , '王熙鳳' , '巧姐' , '李紈' , '秦可卿']
 
 
 
@@ -131,6 +131,60 @@ for w in words:
         plt.plot(xy[0], xy[1], '.', alpha =1, color = 'red')
         plt.text(xy[0], xy[1], w, fontproperties = zhfont1, alpha = 1, color = 'yellow')
 plt.show()
+
+
+
+# 計算向量距離
+
+# 定義函數計算兩個人物之間的距離
+def calculate_distance(person1, person2):
+    if person1 in word2ind and person2 in word2ind:
+        # 獲取兩個人物的索引
+        ind1 = word2ind[person1]
+        ind2 = word2ind[person2]
+
+        # 獲取兩個人物的向量
+        vec1 = rawWordVec[ind1]
+        vec2 = rawWordVec[ind2]
+
+        # 計算兩個向量之間的歐式距離
+        distance = np.linalg.norm(vec1 - vec2)
+        return distance
+    else:
+        print(f"詞彙 '{person1}' 或 '{person2}' 不存在於詞彙中。")
+
+
+# 遍歷所有人物組合，並計算距離
+for i in range(len(words)):
+    for j in range(i+1, len(words)):
+        person1 = words[i]
+        person2 = words[j]
+        distance = calculate_distance(person1, person2)
+        if distance is not None:
+            print(f"{person1} 和 {person2} 之間的距離為: {distance}")
+
+
+# 將人物距離結果由低至高排序
+
+# 創建一個空的列表，用於存儲所有人物之間的距離
+distances = []
+
+# 遍歷所有人物組合，並計算距離
+for i in range(len(words)):
+    for j in range(i+1, len(words)):
+        person1 = words[i]
+        person2 = words[j]
+        distance = calculate_distance(person1, person2)
+        if distance is not None:
+            # 將距離和對應的人物組合添加到 distances 列表中
+            distances.append((person1, person2, distance))
+
+# 將 distances 列表按照距離由低至高排序
+sorted_distances = sorted(distances, key=lambda x: x[2])
+
+# 輸出排序後的結果
+for distance_info in sorted_distances:
+    print(f"{distance_info[0]} 和 {distance_info[1]} 之間的距離為: {distance_info[2]}")            
 
 
 
