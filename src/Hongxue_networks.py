@@ -14,10 +14,10 @@ def deal_data():
         honglou = f.readlines()
     
     # 載入自訂字典 "renwu_forcut"，用於jieba分詞。
-    jieba.load_userdict("Hongxue_renwu_forcut")
+    jieba.load_userdict("Hongxue_renwu_forcut.txt")
     
     # 使用 pandas 庫的 read_csv 函數讀取 "renwu_forcut" 檔，其中 header=-1 表示沒有列名。
-    renwu_data = pd.read_csv("Hongxue_renwu_forcut", header=-1)
+    renwu_data = pd.read_csv("Hongxue_renwu_forcut.txt", header=None)
     
     # 將讀取到的資料轉換為清單，並提取每個元素的第一個字串，然後存儲在 mylist 中。
     mylist = [k[0].split(" ")[0] for k in renwu_data.values.tolist()]
@@ -116,3 +116,6 @@ def deal_data():
                 
                 # 將人物關係以 CSV 格式寫入檔，每一行表示一個關係，格式為 "Source,Target,Weight"。
                 f.write(name + "," + v + "," + str(w) + "\n")
+
+
+deal_data()
