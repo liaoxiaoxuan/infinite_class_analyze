@@ -118,4 +118,21 @@ def deal_data():
                 f.write(name + "," + v + "," + str(w) + "\n")
 
 
+
+# 將人物名稱及其出現次數寫入到一個名為 "NameNode.csv" 的 CSV 文件中
+    
+    # 以寫入模式打開一個名為 "NameNode.csv" 的檔，並指定編碼為'utf-8'，檔物件賦值給 f。
+    with open("NameNode.csv", "w", encoding='utf-8') as f:
+        
+        # 將檔的第一行寫入標題，這裡是 "ID（人物ID）,Label（人物名稱）,Weight（關係權重）"，用逗號分隔，表示列名。
+        f.write("ID,Label,Weight\n")
+        
+        # 對於 names 字典中的每個鍵值對進行迴圈，其中鍵是人物名稱，值是該人物出現的次數。
+        for name, times in names.items():
+            
+            # 將人物名稱、人物名稱和出現次數以逗號分隔的形式寫入檔。str(times)將出現次數轉換為字串。每次迴圈後換行。
+            f.write(name + "," + name + "," + str(times) + "\n")
+
+
+
 deal_data()
