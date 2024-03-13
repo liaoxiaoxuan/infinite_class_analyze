@@ -183,4 +183,25 @@ def deal_graph():
 
 
 
+    # 使用 pyecharts 庫創建一個圖形物件，並將之前處理得到的節點和邊資料添加到圖形中，以構建一個關係圖。
+    
+    # 定義一個名為 g 的變數，用於存儲圖形物件。
+    g = (
+        
+        # 創建一個空白的關係圖物件。
+        Graph()
+        
+        # 向關係圖中添加節點和邊
+        # nodes：節點資料；links：邊資料；repulsion=8000：指定節點之間的斥力大小，使得節點之間的間距適當。
+        .add("", nodes, links, repulsion=8000)
+        
+        # 設置全域選項，包括標題選項，這裡將標題設置為 "紅樓人物關係"。
+        .set_global_opts(title_opts=opts.TitleOpts(title="紅樓人物關係"))
+    )
+
+    # 返回構建好的關係圖物件 g。
+    return g
+
+
+
 deal_data()
