@@ -204,4 +204,19 @@ def deal_graph():
 
 
 
+if __name__ == '__main__':
+    
+    # 調用 deal_data() 函數，這個函數處理文本資料。
+    deal_data()
+
+    # 調用 deal_graph() 函數，處理圖形資料，並將返回的圖形物件賦值給變數 g。
+    g = deal_graph()
+
+    # 將圖形物件 g 渲染成檔或顯示在螢幕上。
+    # 具體的操作取決於 render() 方法的實現。
+    # 通常情況下，它會將圖形保存到檔中，並根據檔案格式的尾碼進行選擇，比如 .html、.png 等。
+    g.render()
+
+
+
 deal_data()
