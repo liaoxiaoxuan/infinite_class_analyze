@@ -152,4 +152,35 @@ def deal_graph():
     namenode_data_list = namenode_data.values.tolist()
 
 
+
+# 處理讀取的節點和關係資料，以準備構建視覺化圖
+# 生成一個包含節點和邊的列表，以便後續使用這些資料來構建圖形視覺化
+
+    # 創建一個空清單 nodes，用於存儲節點資料。
+    nodes = []
+
+    # 對於讀取的名為 'NameNode.csv' 的節點資料清單中的每個節點進行迴圈處理。
+    for node in namenode_data_list:
+
+        # 檢查當前節點的名稱是否為 "寶玉"。
+        if node[0] == "寶玉":
+
+            # 如果當前節點的名稱為 "寶玉"，則將其權重值除以3。
+            node[2] = node[2]/3
+        
+        # 將節點的名稱和權重信息（經過處理後）以字典的形式添加到 nodes 列表中，其中 "name" 鍵對應節點名稱，"symbolSize" 鍵對應節點的大小。
+        nodes.append({"name": node[0], "symbolSize": node[2]/30})
+    
+    # 創建一個空清單 links，用於存儲關係資料。
+    links = []
+
+    # 對於讀取的名為 'relationship.csv' 的關係資料清單中的每個關係進行迴圈處理。
+    for link in relationship_data_list:
+
+        # 將關係的源節點、目標節點以及關係權重以字典的形式添加到 links 列表中。
+        # "Source"：人物1, "Target"：人物2, "Weight"：關係權重
+        links.append({"source": link[0], "target": link[1], "value": link[2]})
+
+
+
 deal_data()
