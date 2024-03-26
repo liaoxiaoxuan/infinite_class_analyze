@@ -1,8 +1,10 @@
 import pandas as pd
+from pyecharts.render import make_snapshot
 from pyecharts.charts import Graph
 from pyecharts import options as opts
 import jieba
 import jieba.posseg as pseg
+from snapshot_selenium import snapshot
 
 
 
@@ -216,6 +218,7 @@ if __name__ == '__main__':
     # 具體的操作取決於 render() 方法的實現。
     # 通常情況下，它會將圖形保存到檔中，並根據檔案格式的尾碼進行選擇，比如 .html、.png 等。
     g.render()
+    make_snapshot(snapshot,g.render(),'honglou_relationship.png')
 
 
 
