@@ -139,6 +139,57 @@ def deal_graph():
 
 
 
+# 處理讀取的節點和關係資料，以準備構建視覺化圖
+# 生成一個包含節點和邊的列表，以便後續使用這些資料來構建圖形視覺化
+
+    # 創建一個空清單 nodes，用於存儲節點資料。
+    nodes = []
+
+    # 對於讀取的名為 'NameNode.csv' 的節點資料清單中的每個節點進行迴圈處理。
+    for node in namenode_data_list:
+
+        # 檢查當前節點的名稱是否為 "諸葛亮"。
+        if node[0] == "諸葛亮":
+
+            # 如果當前節點的名稱為 "諸葛亮"，則將其權重值除以3。
+            node[2] = node[2]/3
+        
+        # 將節點的名稱和權重信息（經過處理後）以字典的形式添加到 nodes 列表中，其中 "name" 鍵對應節點名稱，"symbolSize" 鍵對應節點的大小。
+        nodes.append({"name": node[0], "symbolSize": node[2]/30})
+    
+    # 創建一個空清單 links，用於存儲關係資料。
+    links = []
+
+    # 對於讀取的名為 'relationship.csv' 的關係資料清單中的每個關係進行迴圈處理。
+    for link in relationship_data_list:
+
+        # 將關係的源節點、目標節點以及關係權重以字典的形式添加到 links 列表中。
+        # "Source"：人物1, "Target"：人物2, "Weight"：關係權重
+        links.append({"source": link[0], "target": link[1], "value": link[2]})
+
+
+
+    # 使用 pyecharts 庫創建一個圖形物件，並將之前處理得到的節點和邊資料添加到圖形中，以構建一個關係圖。
+    
+    # 定義一個名為 g 的變數，用於存儲圖形物件。
+    g = (
+        
+        # 創建一個空白的關係圖物件。
+        Graph()
+        
+        # 向關係圖中添加節點和邊
+        # nodes：節點資料；links：邊資料；repulsion=8000：指定節點之間的斥力大小，使得節點之間的間距適當。
+        .add("", nodes, links, repulsion=8000)
+        
+        # 設置全域選項，包括標題選項，這裡將標題設置為 "紅樓人物關係"。
+        .set_global_opts(title_opts=opts.TitleOpts(title="三國演義人物關係"))
+    )
+
+    # 返回構建好的關係圖物件 g。
+    return g
+
+
+
 if __name__ == '__main__':
     
     # 調用 deal_data() 函數，這個函數處理文本資料。
