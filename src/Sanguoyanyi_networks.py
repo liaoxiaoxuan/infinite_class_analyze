@@ -75,3 +75,46 @@ def deal_data():
 
         # 輸出人物名稱及出現次數。
         print(name, times)
+
+
+
+# 構建人物之間的關係，並將結果保存到一個 CSV 檔，以便建立人物關係圖
+    
+    # 對於臨時人物列表中的每個子列表進行迴圈處理。
+    for name in tmpNames:
+        
+        # 對於當前子列表中的每個人名進行迴圈處理。
+        for name1 in name:
+            
+            # 對於當前子列表中的每個人名再次進行迴圈處理。
+            for name2 in name:
+                
+                # 如果當前兩個人名相同，則繼續下一個迴圈，跳過重複計算。
+                if name1 == name2:
+                    continue
+                
+                # 如果名為 name1 的人物與名為 name2 的人物之間的關係尚未建立，則創建一個新的關係，初始權重為1。
+                if relationships[name1].get(name2) is None:
+                    relationships[name1][name2] = 1
+                
+                # 如果關係已存在，則將權重加1。
+                else:
+                    relationships[name1][name2] += 1
+    
+    # 輸出生成的人物關係字典。
+    print(relationships)
+    
+    # 打開一個 CSV 檔 "relationship.csv"，以寫入模式打開，使用 UTF-8 編碼。
+    with open("Sanguoyanyi_N_relationship.csv", "w", encoding='utf-8') as f:
+        
+        # 寫入 CSV 文件的表頭，即列名 "Source"（人物1）, "Target"（人物2）, "Weight"（關係權重）。
+        f.write("Source,Target,Weight\n")
+        
+        # 對於人物關係字典中的每個鍵值對進行迴圈處理。
+        for name, edges in relationships.items():
+            
+            # 對於每個人物的關係字典中的鍵值對進行迴圈處理，其中鍵是與當前人物有關係的另一個人物，值是兩者之間的關係權重。
+            for v, w in edges.items():
+                
+                # 將人物關係以 CSV 格式寫入檔，每一行表示一個關係，格式為 "Source,Target,Weight"。
+                f.write(name + "," + v + "," + str(w) + "\n")
