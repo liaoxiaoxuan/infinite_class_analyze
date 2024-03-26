@@ -1,0 +1,11 @@
+諸葛亮 nr
+劉備 nr
+關羽 nr
+張飛 nr
+曹操 nr
+周瑜 nr
+孫權 nr
+趙雲 nr
+劉禪 nr
+司馬懿 nr
+司馬昭 nr
