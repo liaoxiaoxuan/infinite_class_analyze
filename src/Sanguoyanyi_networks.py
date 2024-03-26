@@ -118,3 +118,28 @@ def deal_data():
                 
                 # 將人物關係以 CSV 格式寫入檔，每一行表示一個關係，格式為 "Source,Target,Weight"。
                 f.write(name + "," + v + "," + str(w) + "\n")
+
+
+
+# 定義了一個函數 deal_graph()，用於處理圖資料
+# 讀取兩個 CSV 檔中的資料並將其轉換為列表形式，以便後續對圖資料進行處理。
+def deal_graph():
+
+    # 使用 pandas 庫的 read_csv 函數讀取名為 'relationship.csv' 的 CSV 檔，並將其存儲在 relationship_data 中。
+    relationship_data = pd.read_csv('relationship.csv')
+
+    # 使用 pandas 庫的 read_csv 函數讀取名為 'NameNode.csv' 的 CSV 檔，並將其存儲在 namenode_data 中。
+    namenode_data = pd.read_csv('NameNode.csv')
+
+    # 將 relationship_data 轉換為列表形式，其中每個子列表對應 CSV 檔中的一行資料。結果存儲在 relationship_data_list 中。
+    relationship_data_list = relationship_data.values.tolist()
+
+    # 將 namenode_data 轉換為列表形式，其中每個子列表對應 CSV 檔中的一行資料。結果存儲在 namenode_data_list 中。
+    namenode_data_list = namenode_data.values.tolist()
+
+
+
+if __name__ == '__main__':
+    
+    # 調用 deal_data() 函數，這個函數處理文本資料。
+    deal_data()
