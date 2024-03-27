@@ -16,7 +16,7 @@ def deal_data():
         honglou = f.readlines()
     
     # 載入自訂字典 "renwu_forcut"，用於jieba分詞。
-    jieba.load_userdict("Sanguoyanyi_renwu_forcut.txt")
+    jieba_dict = jieba.load_userdict("Sanguoyanyi_renwu_forcut.txt")
     
     # 使用 pandas 庫的 read_csv 函數讀取 "renwu_forcut" 檔，其中 header=-1 表示沒有列名。
     renwu_data = pd.read_csv("Sanguoyanyi_renwu_forcut.txt", header=None)
@@ -65,16 +65,16 @@ def deal_data():
             names[w.word] += 1
     
     # 輸出人物關係字典。
-    print(relationships)
+    print("人物關係字典：", relationships)
     
     # 輸出臨時人物列表。
-    print(tmpNames)
+    print("臨時人物列表：", tmpNames)
 
     # 對於 names 字典中的每個鍵值對進行迴圈。
     for name, times in names.items():
 
         # 輸出人物名稱及出現次數。
-        print(name, times)
+        print("人物名稱及出現次數：", name, times)
 
 
 
@@ -194,3 +194,16 @@ if __name__ == '__main__':
     
     # 調用 deal_data() 函數，這個函數處理文本資料。
     deal_data()
+
+    # 調用 deal_graph() 函數，處理圖形資料，並將返回的圖形物件賦值給變數 g。
+    g = deal_graph()
+
+    # 將圖形物件 g 渲染成檔或顯示在螢幕上。
+    # 具體的操作取決於 render() 方法的實現。
+    # 通常情況下，它會將圖形保存到檔中，並根據檔案格式的尾碼進行選擇，比如 .html、.png 等。
+    g.render()
+    make_snapshot(snapshot,g.render(),'honglou_relationship.png')
+
+
+
+deal_data()
