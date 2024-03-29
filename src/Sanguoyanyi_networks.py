@@ -121,15 +121,31 @@ def deal_data():
 
 
 
+# 將人物名稱及其出現次數寫入到一個名為 "NameNode.csv" 的 CSV 文件中
+    
+    # 以寫入模式打開一個名為 "NameNode.csv" 的檔，並指定編碼為'utf-8'，檔物件賦值給 f。
+    with open("Sanguoyanyi_N_NameNode.csv", "w", encoding='utf-8') as f:
+        
+        # 將檔的第一行寫入標題，這裡是 "ID（人物ID）,Label（人物名稱）,Weight（關係權重）"，用逗號分隔，表示列名。
+        f.write("ID,Label,Weight\n")
+        
+        # 對於 names 字典中的每個鍵值對進行迴圈，其中鍵是人物名稱，值是該人物出現的次數。
+        for name, times in names.items():
+            
+            # 將人物名稱、人物名稱和出現次數以逗號分隔的形式寫入檔。str(times)將出現次數轉換為字串。每次迴圈後換行。
+            f.write(name + "," + name + "," + str(times) + "\n")
+
+
+
 # 定義了一個函數 deal_graph()，用於處理圖資料
 # 讀取兩個 CSV 檔中的資料並將其轉換為列表形式，以便後續對圖資料進行處理。
 def deal_graph():
 
     # 使用 pandas 庫的 read_csv 函數讀取名為 'relationship.csv' 的 CSV 檔，並將其存儲在 relationship_data 中。
-    relationship_data = pd.read_csv('relationship.csv')
+    relationship_data = pd.read_csv('Sanguoyanyi_N_relationship.csv')
 
     # 使用 pandas 庫的 read_csv 函數讀取名為 'NameNode.csv' 的 CSV 檔，並將其存儲在 namenode_data 中。
-    namenode_data = pd.read_csv('NameNode.csv')
+    namenode_data = pd.read_csv('Sanguoyanyi_N_NameNode.csv')
 
     # 將 relationship_data 轉換為列表形式，其中每個子列表對應 CSV 檔中的一行資料。結果存儲在 relationship_data_list 中。
     relationship_data_list = relationship_data.values.tolist()
@@ -149,7 +165,7 @@ def deal_graph():
     for node in namenode_data_list:
 
         # 檢查當前節點的名稱是否為 "諸葛亮"。
-        if node[0] == "諸葛亮":
+        if node[0] == "葛亮":
 
             # 如果當前節點的名稱為 "諸葛亮"，則將其權重值除以3。
             node[2] = node[2]/3
@@ -202,7 +218,7 @@ if __name__ == '__main__':
     # 具體的操作取決於 render() 方法的實現。
     # 通常情況下，它會將圖形保存到檔中，並根據檔案格式的尾碼進行選擇，比如 .html、.png 等。
     g.render()
-    make_snapshot(snapshot,g.render(),'honglou_relationship.png')
+    # make_snapshot(snapshot,g.render(),'honglou_relationship.png')
 
 
 
