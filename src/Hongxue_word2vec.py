@@ -134,7 +134,7 @@ plt.show()
 
 
 
-# 計算向量距離
+# 計算向量直線距離
 
 # 定義函數計算兩個人物之間的距離
 def calculate_distance(person1, person2):
