@@ -220,27 +220,27 @@ for i in range(len(words)):
 print("----------------------------------------------------------------")
 
 
-# 將人物距離結果由低至高排序
+# 將人物 cosine similarity 結果由高至低排序
 
-# 創建一個空的列表，用於存儲所有人物之間的距離
-distances = []
+# 創建一個空的列表，用於存儲所有人物之間的 cosine similarity
+similarities = []
 
-# 遍歷所有人物組合，並計算距離
+# 遍歷所有人物組合，並計算 cosine similarity
 for i in range(len(words)):
     for j in range(i+1, len(words)):
         person1 = words[i]
         person2 = words[j]
-        distance = calculate_distance(person1, person2)
-        if distance is not None:
-            # 將距離和對應的人物組合添加到 distances 列表中
-            distances.append((person1, person2, distance))
+        similarity = calculate_cosine_similarity(person1, person2)
+        if similarity is not None:
+            # 將 cosine similarity 和對應的人物組合添加到 similarities 列表中
+            similarities.append((person1, person2, similarity))
 
-# 將 distances 列表按照距離由低至高排序
-sorted_distances = sorted(distances, key=lambda x: x[2])
+# 將 similarities 列表按照 cosine similarity 由高至低排序
+sorted_similarities = sorted(similarities, key=lambda x: x[2], reverse=True)
 
 # 輸出排序後的結果
-for distance_info in sorted_distances:
-    print(f"{distance_info[0]} 和 {distance_info[1]} 之間的 cosine similarity 為: {distance_info[2]}")
+for similarity_info in sorted_similarities:
+    print(f"{similarity_info[0]} 和 {similarity_info[1]} 之間的 cosine similarity 為: {similarity_info[2]}")
 
 
 
