@@ -130,7 +130,7 @@ for w in words:
         xy = X_reduced[ind]
         plt.plot(xy[0], xy[1], '.', alpha =1, color = 'red')
         plt.text(xy[0], xy[1], w, fontproperties = zhfont1, alpha = 1, color = 'yellow')
-plt.show()
+# plt.show()
 
 
 
@@ -186,6 +186,37 @@ sorted_distances = sorted(distances, key=lambda x: x[2])
 # 輸出排序後的結果
 for distance_info in sorted_distances:
     print(f"{distance_info[0]} 和 {distance_info[1]} 之間的距離為: {distance_info[2]}")            
+
+
+
+# 計算向量餘弦距離
+
+# 定義函數計算兩個人物之間的 cosine similarity
+def calculate_cosine_similarity(person1, person2):
+    if person1 in word2ind and person2 in word2ind:
+        # 獲取兩個人物的索引
+        ind1 = word2ind[person1]
+        ind2 = word2ind[person2]
+
+        # 獲取兩個人物的向量
+        vec1 = rawWordVec[ind1]
+        vec2 = rawWordVec[ind2]
+
+        # 計算兩個向量之間的 cosine similarity
+        similarity = np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
+        return similarity
+    else:
+        print(f"詞彙 '{person1}' 或 '{person2}' 不存在於詞彙中。")
+
+
+# 遍歷所有人物組合，並計算 cosine similarity
+for i in range(len(words)):
+    for j in range(i+1, len(words)):
+        person1 = words[i]
+        person2 = words[j]
+        similarity = calculate_cosine_similarity(person1, person2)
+        if similarity is not None:
+            print(f"{person1} 和 {person2} 之間的 cosine similarity 為: {similarity}")
 
 
 
