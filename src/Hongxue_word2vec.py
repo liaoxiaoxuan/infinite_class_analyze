@@ -185,7 +185,7 @@ sorted_distances = sorted(distances, key=lambda x: x[2])
 
 # 輸出排序後的結果
 for distance_info in sorted_distances:
-    print(f"{distance_info[0]} 和 {distance_info[1]} 之間的距離為: {distance_info[2]}")            
+    print(f"{distance_info[0]} 和 {distance_info[1]} 之間的距離為: {distance_info[2]}")
 
 
 
@@ -217,6 +217,30 @@ for i in range(len(words)):
         similarity = calculate_cosine_similarity(person1, person2)
         if similarity is not None:
             print(f"{person1} 和 {person2} 之間的 cosine similarity 為: {similarity}")
+print("----------------------------------------------------------------")
+
+
+# 將人物距離結果由低至高排序
+
+# 創建一個空的列表，用於存儲所有人物之間的距離
+distances = []
+
+# 遍歷所有人物組合，並計算距離
+for i in range(len(words)):
+    for j in range(i+1, len(words)):
+        person1 = words[i]
+        person2 = words[j]
+        distance = calculate_distance(person1, person2)
+        if distance is not None:
+            # 將距離和對應的人物組合添加到 distances 列表中
+            distances.append((person1, person2, distance))
+
+# 將 distances 列表按照距離由低至高排序
+sorted_distances = sorted(distances, key=lambda x: x[2])
+
+# 輸出排序後的結果
+for distance_info in sorted_distances:
+    print(f"{distance_info[0]} 和 {distance_info[1]} 之間的 cosine similarity 為: {distance_info[2]}")
 
 
 
