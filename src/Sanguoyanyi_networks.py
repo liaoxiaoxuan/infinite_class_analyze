@@ -8,7 +8,7 @@ from snapshot_selenium import snapshot
 
 
 
-# 處理《紅樓夢》文本資料
+# 處理《三國演義》文本資料
 def deal_data():
     
     # 打開文本、讀取所有的行，並將其存儲在清單 honglou 中。
