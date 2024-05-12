@@ -206,4 +206,52 @@
     **2-2. 《三國演義》**  
         匯入人名和地名字典之後，將《三國演義》進行斷詞，並生成書中諸葛亮和三國主要人物之間的人際網絡圖。  
         
-      ![fig6](./src/Sanguoyanyi_networks.png)
+      ![fig6](./src/Sanguoyanyi_networks.png)  
+    
+## 其他參考資源
+
+1. word2vect 相關  
+
+    + 用詞向量技術簡單分析紅樓夢人物關係用 n-gramma 生成詞向量 word2vect 進行模型訓練   
+    https://cloud.tencent.com/developer/article/1180991  
+    
+    + 用深度學習模型 Word2Vec 探索《紅樓夢》人物關係  
+    https://www.cnblogs.com/wangliman/p/9740302.html  
+
+    + python 紅樓夢人物關係網絡圖
+    https://blog.51cto.com/u_16099267/8985550
+
+2. Social networks 相關
+
+    + Python分析紅樓夢社交網路  
+    https://zhuanlan.zhihu.com/p/78845119
+
+    + Python分析紅樓夢，寶玉和十二釵的人物關係  
+    https://mp.weixin.qq.com/s?__biz=MzI3NDk3MDgxMA==&mid=2247484472&idx=1&sn=b7093962a9d0b621abe80e0d85798c4c&scene=19#wechat_redirect
+
+    + 用python分析《三國演義》中的社交網路  
+    https://github.com/blmoistawinde/hello_world/blob/master/sanguo_network/%E7%94%A8python%E5%88%86%E6%9E%90%E3%80%8A%E4%B8%89%E5%9B%BD%E6%BC%94%E4%B9%89%E3%80%8B%E4%B8%AD%E7%9A%84%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C.md
+
+## 結論與展望
+
+1. Jieba 對文言文的貢獻與限制  
+    以現在的分詞工具而言，尚無法對古典散文，進行非常精確地分析，可能需要較多的「字典」輔佐，以提升準確度。  
+    
+    + 困境  
+        原來的「詩話」議題，囿於Jieba對資料的分詞結果，一直不盡人意，也因此無法進行其他更為擴展的分析和解讀。如《詩話總龜》提及的作家和詩歌作品，以及分析與歸納不同援引資料來源，對不同作家或作品的評論。而中國古典章回小說，有著完整的結構、密切且明確的人物互動，再加上用字遣詞也較接近現代的白話書寫，因此才將分析資料改為章回小說。  
+
+    + 後續修正與相關貢獻
+
+        - 需要再輸入更多「字典」，增加分析的準確度。  
+        - 這些分詞工具可以分析文言文，倘若分析資料換成白話文，應有更多元的價值與運用。  
+
+2. 古人稱呼的多樣性  
+    古人除了姓、名以外，還有各種字、號等稱呼，而古典文學作品，無論是散文或小說，當中的人物稱呼，常常會因時因地，或因交談的對象和往來的親疏等關係而有所不同。  
+
+    + 困境  
+        在這份分析中，無論是 work2vect 或 Social networks，為了便利性，皆統一採用人物姓名進行分析，此舉也會影響分析結果。  
+
+    + 後續修正與相關貢獻
+
+        - 需要將人物的所有稱呼都匯入字典，進行分析。  
+        - 可以再進一步探討，同一個人物，不同稱謂出現的時刻，進而統整出古人這些多元稱謂的稱呼時機。  
