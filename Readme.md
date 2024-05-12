@@ -3,22 +3,22 @@
 ## 專案概述
 
 這個專案是我第一個「資料視覺化與分析」相關的專案，旨在使用資料分析和自然語言處理技術，分析文言文的人物關係。  
-會將分析材料鎖定於文言文，係由於我本身畢業於中國文學系所，除了文本的研讀與探究，研究所期間也有修習「數位人文」課程，對運用數位媒材協助議題的開展，甚感新鮮與有趣。因此，想藉由這次的程式操作，更進一步理解資料分析的城市開發，以及運用程式進行資料分析與傳統的研究方法，兩者的探究結果之異同。
+會將分析材料鎖定於文言文，係由於我本身畢業於中國文學系所，除了文本的研讀與探究，研究所期間也有修習「數位人文」課程，對運用數位媒材協助議題的開展，甚感新鮮與有趣。因此，想藉由這次的程式操作，更進一步理解資料分析的程式開發，以及運用程式進行資料分析與傳統的研究方法，兩者的探究結果之異同。
 
 ### 分析資料
 
 #### 1. 《詩話總龜》前集  
-《詩話總龜》前集是宋人阮閱所編之宋代著名的詩話總集，蒐羅宋代詩話、隨筆等詩歌評論的書籍。期望可以藉由資料分析方法，得知書中引用內容和蒐羅資料的出處來源。
+[《詩話總龜》前集](https://ctext.org/wiki.pl?if=gb&res=459126) 是宋人阮閱所編之宋代著名的詩話總集，蒐羅宋代詩話、隨筆等詩歌評論的書籍。期望可以藉由資料分析方法，得知書中引用內容和蒐羅資料的出處來源。
 
 #### 2. 《紅樓夢》和《三國演義》  
-這兩本是中國古代著名的章回小說。尤其是《紅樓夢》，更是最為著名且研究議題為古今中外討論度最高的，甚至將研究《紅樓夢》相關議題的學問，稱為「紅學」，其重要程度可見一斑。然而，也正因為《紅樓夢》‵備受高度關注，現有的資料分析，亦多如過江之鯽；因此，另外再加上也是為大眾所熟知的《三國演義》，以同樣方法進行分析、再次演練。
+[《紅樓夢》](https://ctext.org/hongloumeng/zh) 和[《三國演義》](https://ctext.org/sanguo-yanyi/zh) 這兩本是中國古代著名的章回小說。尤其是《紅樓夢》，更是最為著名且研究議題為古今中外討論度最高的，甚至將研究《紅樓夢》相關議題的學問，稱為「紅學」，其重要程度可見一斑。然而，也正因為《紅樓夢》‵備受高度關注，現有的資料分析，亦多如過江之鯽；因此，另外再加上也是為大眾所熟知的《三國演義》，以同樣方法進行分析、再次演練。
 
 ### 分析方法
-+ 使用 [Jieba 分詞模組]() 進行文本分詞。
++ 使用 [Jieba 分詞模組](https://github.com/fxsjy/jieba/tree/master) 進行文本分詞。
 + 使用詞頻分析模組進行詞頻統計。
-+ 使用 matplotlib 技術生成文字雲和長條圖以視覺化詞頻分佈。
-+ 使用 Word2Vec 模型進行詞向量表示和相似度計算。
-+ 使用 networks 技術生成人際網絡圖。
++ 使用 [matplotlib 技術](https://zh.wikipedia.org/zh-tw/Matplotlib) 生成文字雲和長條圖以視覺化詞頻分佈。
++ 使用 [Word2Vec 模型](https://zh.wikipedia.org/zh-tw/Word2vec) 進行詞向量表示和相似度計算。
++ 使用 [Social network 技術](https://zh.wikipedia.org/zh-tw/%E7%A4%BE%E4%BC%9A%E7%BD%91%E7%BB%9C) 生成人際網絡圖。
 
 ## 安裝說明
 
@@ -46,8 +46,8 @@
 ```
 
 #### 1-2. 下載相關資源
-+ 下載繁體中文詞庫檔案 dict.txt.big.txt
-+ 下載中文字型檔案 NotoSerifTC-Regular.otf
++ 下載繁體中文詞庫檔案 [dict.txt.big.txt](src/dict.txt.big.txt)
++ 下載中文字型檔案 [NotoSerifTC-Regular.otf](Noto_Serif_TC/NotoSerifTC-Regular.otf)
 
 #### 1-3. 執行程式碼
 ```
@@ -67,14 +67,14 @@
 ```
 
 #### 2-2. 下載相關資源
-+ 下載繁體中文詞庫檔案 dict.txt.big.txt
-+ 下載中文字型檔案 NotoSerifTC-Regular.otf
++ 下載繁體中文詞庫檔案 [dict.txt.big.txt](src/dict.txt.big.txt)
++ 下載中文字型檔案 [NotoSerifTC-Regular.otf](Noto_Serif_TC/NotoSerifTC-Regular.otf)
 + 下載文本檔案
-    - 《紅樓夢》 Dream_of_the_Red_Chamber.txt  
-    - 《三國演義》 Sanguoyanyi.txt
+    - 《紅樓夢》 [hongloumeng.txt](src/hongloumeng.txt)  
+    - 《三國演義》 [Sanguoyanyi.txt](src/Sanguoyanyi.txt)
 + 下載人名和地名字典檔案
-    - 《紅樓夢》 Hongxue_character.txt 和 Hongxue_place.txt
-    - 《三國演義》 Sanguoyanyi_character.txt 和 Sanguoyanyi_place.txt
+    - 《紅樓夢》 [Hongxue_character.txt](src/Hongxue_character.txt) 和 [Hongxue_place.txt](src/Hongxue_place.txt)
+    - 《三國演義》 [Sanguoyanyi_character.txt](src/Sanguoyanyi_character.txt) 和 [Sanguoyanyi_place.txt](src/Sanguoyanyi_place.txt)
 
 #### 2-3. 執行程式碼
 + 《紅樓夢》
@@ -97,14 +97,14 @@
 ```
 
 #### 3-2. 下載相關資源
-+ 下載繁體中文詞庫檔案 dict.txt.big.txt
-+ 下載中文字型檔案 NotoSerifTC-Regular.otf
++ 下載繁體中文詞庫檔案 [dict.txt.big.txt](src/dict.txt.big.txt)
++ 下載中文字型檔案 [NotoSerifTC-Regular.otf](Noto_Serif_TC/NotoSerifTC-Regular.otf)
 + 下載文本檔案
-    - 《紅樓夢》 Dream_of_the_Red_Chamber.txt  
-    - 《三國演義》 Sanguoyanyi.txt
+    - 《紅樓夢》 [hongloumeng.txt](src/hongloumeng.txt)  
+    - 《三國演義》 [Sanguoyanyi.txt](src/Sanguoyanyi.txt)
 + 下載人名字典
-    - 《紅樓夢》 Hongxue_renwu_forcut.txt
-    - 《三國演義》 Sanguoyanyi_renwu_forcut.txt
+    - 《紅樓夢》 [Hongxue_renwu_forcut.txt](src/Hongxue_renwu_forcut.txt)
+    - 《三國演義》 [Sanguoyanyi_renwu_forcut.txt](src/Sanguoyanyi_renwu_forcut.txt)
 
 #### 3-3. 執行程式碼
 + 《紅樓夢》
@@ -196,7 +196,7 @@
         關羽 和 曹操 之間的 cosine similarity 為: 0.955909252166748
         ```  
 
-3. 《紅樓夢》和《三國演義》人際網絡圖：**networks** 應用  
+3. 《紅樓夢》和《三國演義》人際網絡圖：**Social networks** 應用  
 
     **3-1. 《紅樓夢》**  
         匯入人名和地名字典之後，將《紅樓夢》進行斷詞，並生成書中賈寶玉和十二金釵等主要人物之間的人際網絡圖。  
