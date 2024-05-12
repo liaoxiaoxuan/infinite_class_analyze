@@ -31,7 +31,7 @@ jieba.load_userdict("Hongxue_place.txt")  # 地名
 
 
 # 匯入 data，並用「取代」進行分句
-f = open('Dream_of_the_Red_Chamber.txt', encoding='utf-8')
+f = open('hongloumeng.txt', encoding='utf-8')
 f = f.read().split("。")
 # print(list(f))
 

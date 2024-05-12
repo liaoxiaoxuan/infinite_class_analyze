@@ -12,7 +12,7 @@ from snapshot_selenium import snapshot
 def deal_data():
     
     # 打開文本、讀取所有的行，並將其存儲在清單 honglou 中。
-    with open("Dream_of_the_Red_Chamber.txt", encoding='utf-8') as f:
+    with open("hongloumeng.txt", encoding='utf-8') as f:
         honglou = f.readlines()
     
     # 載入自訂字典 "renwu_forcut"，用於jieba分詞。
